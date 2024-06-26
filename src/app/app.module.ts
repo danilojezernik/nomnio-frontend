@@ -6,6 +6,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { DataGetTimeComponent } from "./components/data-get-time/data-get-time.component";
 import { DataGetTempComponent } from "./components/data-get-temp/data-get-temp.component";
 import { DataGetForecastComponent } from "./components/data-get-forecast/data-get-forecast.component";
+import { HeaderComponent } from "./components/header/header.component";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DataGetForecastComponent } from "./components/data-get-forecast/data-ge
         HttpClientModule,
         DataGetTimeComponent,
         DataGetTempComponent,
-        DataGetForecastComponent
+        DataGetForecastComponent,
+        HeaderComponent
     ],
   providers: [],
   bootstrap: [AppComponent]
