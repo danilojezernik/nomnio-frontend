@@ -36,7 +36,6 @@ export class WeatherService {
     )
   }
 
-
   /**
    * Retrieves weather data from the backend API
    * @returns Observable<WeatherForecast[]> Observable emitting Weather forecast data array

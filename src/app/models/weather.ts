@@ -33,5 +33,6 @@ export interface WeatherForecast {
   temp_min: number
   temp_max: number
   description: string
+  icon: string
   clouds: number
 }

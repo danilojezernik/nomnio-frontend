@@ -13,6 +13,8 @@
 
       <!-- Displaying weather data attributes -->
       {{forecast.temp_max}}°C {{forecast.temp_min}}°C {{forecast.temp}}°C {{forecast.description}} {{forecast.dt_txt }}
+      <img style="width: 50px; height: 50px" [src]="'assets/media/weather/' + forecast.icon + '.png'"
+           [alt]="forecast.description">
 
     </div>
 
