@@ -1,0 +1,22 @@
+<div style="background-color: #e86e1e; margin-top: 100px">
+
+  <!-- TODO: Development mode - delete bold after and work on styling -->
+  <b>
+    Show current temp, temp_max, temp_min and description
+  </b>
+
+  <!-- Using ng-container to handle asynchronous data -->
+  <ng-container *ngIf="weatherData$ | async as data">
+    <!-- Iterate over each weather object in the data array -->
+    <div *ngFor="let weather of data">
+      <!-- Display the temperature of the city -->
+      <p *ngIf="weather.main">Current temperature: {{ weather.main.temp }}</p>
+
+      <p *ngIf="weather.weather">Description: {{ weather.weather[0].description }}</p>
+
+      <p *ngIf="weather.main">Min temperature: {{ weather.main.temp_min }}</p>
+      <p *ngIf="weather.main">Max temperature: {{ weather.main.temp_max }}</p>
+
+    </div>
+  </ng-container>
+</div>

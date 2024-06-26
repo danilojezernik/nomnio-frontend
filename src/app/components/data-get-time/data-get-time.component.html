@@ -1,0 +1,18 @@
+<div style="background-color: #e86e1e">
+
+  <!-- TODO: Development mode - delete bold after and work on styling -->
+  <b>
+    Show name of the City and add time of update
+  </b>
+
+  <!-- Using ng-container to handle asynchronous data -->
+  <ng-container *ngIf="weatherDataCity$ | async as data">
+    <!-- Iterate over each weather object in the data array -->
+    <div *ngFor="let weather of data">
+      <!-- Display the name of the city -->
+      <p *ngIf="weather.main">{{ weather.name || '' }}</p>
+    </div>
+    <!-- Display formatted date and time of the last update using WeatherService -->
+    {{ weatherService.formattedDateTime.date }} ob {{ weatherService.formattedDateTime.time }}
+  </ng-container>
+</div>
