@@ -18,7 +18,7 @@ export class DataGetTempComponent {
   public weatherService = inject(WeatherService)
 
   // Observable holding weather data
-  weatherData$: Observable<WeatherCurrent[]> = this.weatherService.getWeather().pipe(
+  weatherData$: Observable<WeatherCurrent[]> = this.weatherService.getWeatherCurrent().pipe(
     map(data => {
       // Transform data to an array containing the first element and that is weather
       return [data[0]]

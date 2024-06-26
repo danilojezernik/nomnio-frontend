@@ -23,7 +23,7 @@ export class WeatherService {
    * Retrieves weather data from the backend API
    * @returns Observable<WeatherCurrent[]> Observable emitting Weather current data array
    */
-  getWeather(): Observable<WeatherCurrent[]> {
+  getWeatherCurrent(): Observable<WeatherCurrent[]> {
     return this._http.get<WeatherCurrent[]>(`${environment.urlLocalCurrent}`).pipe(
       /**
        * Tap into the observable stream without modifying it,

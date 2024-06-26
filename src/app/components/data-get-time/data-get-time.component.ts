@@ -18,6 +18,6 @@ export class DataGetTimeComponent {
   public weatherService = inject(WeatherService)
 
   // Observable holding weather data
-  weatherDataCity$: Observable<WeatherCurrent[]> = this.weatherService.getWeather()
+  weatherDataCity$: Observable<WeatherCurrent[]> = this.weatherService.getWeatherCurrent()
 
 }
