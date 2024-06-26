@@ -1,3 +1,4 @@
 export const environment = {
-  urlLocal: 'http://localhost:8000/weather',
+  urlLocalForecast: 'http://localhost:8000/weather-forecast',
+  urlLocalCurrent: 'http://localhost:8000/weather-current',
 };

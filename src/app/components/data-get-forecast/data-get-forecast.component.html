@@ -1,1 +1,20 @@
-<p>data-get-forecast works!</p>
+<div style="background-color: #e86e1e; margin-top: 100px">
+
+  <!-- TODO: Development mode - delete bold after and work on styling -->
+  <b>
+    Show weather forecast data for 5 days every 3 hours
+  </b>
+
+  <!-- ng-container to handle asynchronous data -->
+  <ng-container *ngIf="forecasts | async as data">
+
+    <!-- Iterating over each forecast item in the data array -->
+    <div *ngFor="let forecast of data">
+
+      <!-- Displaying weather data attributes -->
+      {{forecast.temp_max}}°C {{forecast.temp_min}}°C {{forecast.temp}}°C {{forecast.description}} {{forecast.dt_txt }}
+
+    </div>
+
+  </ng-container>
+</div>
