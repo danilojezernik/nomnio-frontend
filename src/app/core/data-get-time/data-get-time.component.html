@@ -7,32 +7,46 @@
       <!-- Display the name of the city -->
       <p style="font-size: 3rem;" *ngIf="weather.main">{{ weather.name}}</p>
 
-      <img *ngIf="weather.weather && weather.weather[0].icon"
-           [src]="'assets/media/weather/' + weather.weather[0].icon + '.png'"
-           [alt]="weather.name">
-
       <ng-container [ngSwitch]="weather.weather[0].description">
 
         <ng-container *ngSwitchCase="'clear sky'">
-          <app-sun-svg></app-sun-svg>
+          <app-sun-svg/>
         </ng-container>
 
         <ng-container *ngSwitchCase="'few clouds'">
-          <app-few-clouds-svg></app-few-clouds-svg>
+          <app-few-clouds-svg/>
         </ng-container>
 
-        <ng-container *ngSwitchCase="'few clouds'">
-          <app-few-clouds-svg></app-few-clouds-svg>
+        <ng-container *ngSwitchCase="'scattered clouds'">
+          <app-scattered-clouds-svg/>
         </ng-container>
+
+        <ng-container *ngSwitchCase="'broken clouds'">
+          <app-broken-clouds-svg/>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'shower rain'">
+          <app-rain-svg/>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'thunderstorm'">
+          <app-thunderstorm-svg/>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'snow'">
+          <app-snow-svg/>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'rain'">
+          <app-rain-svg/>
+        </ng-container>
+
 
         <ng-container *ngSwitchDefault>
-          <app-few-clouds-svg></app-few-clouds-svg>
+          <app-few-clouds-svg/>
         </ng-container>
 
       </ng-container>
-
-
-
 
     </div>
 

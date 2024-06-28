@@ -3,10 +3,7 @@
   <!-- Iterate over each weather object in the data array -->
   <div style="text-align: center" *ngFor="let weather of data">
     <!-- Display the temperature of the city -->
-
-
     <span style="font-size: 3rem" *ngIf="weather.main">{{ weather.main.temp.toFixed(0) }}°</span>
-
 
     <p style="text-transform: uppercase; font-size: 1rem; padding: 10px 0"
        *ngIf="weather.weather">{{ weather.weather[0].description }}</p>
