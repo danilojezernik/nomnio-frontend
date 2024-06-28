@@ -1,0 +1,53 @@
+button {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  background: #e1b192;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  font-size: 0.65rem;
+  margin: 16px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.71);
+  font-weight: 900;
+  cursor: pointer;
+  z-index: 1;
+}
+
+button:active{
+  transform: scale(0.95);
+}
+
+button::before{
+  content: '';
+  position: absolute;
+  inset: -1px 10px;
+  background: #e86e1e;
+  transition: 500ms;
+  animation: rotate 4s linear infinite;
+  z-index: -1;
+}
+button:hover::before{
+  inset: -1px;
+}
+
+button::after{
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: #fff;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}

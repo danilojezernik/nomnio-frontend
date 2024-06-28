@@ -1,0 +1,12 @@
+<div style="background-color: #e86e1e;">
+
+  <ng-container *ngIf="weatherForecastData$ | async as forecastData">
+      <div *ngFor="let forecast of forecastData">
+        <p><strong>Date/Time:</strong> {{ forecast.dt }}</p>
+        <p><strong>Temperature:</strong> {{ forecast.main.temp }}°C</p>
+        <p><strong>Weather Description:</strong> {{ forecast.weather[0].description }}</p>
+      </div>
+  </ng-container>
+
+
+</div>

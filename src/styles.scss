@@ -1,5 +1,12 @@
 @import "styles/global";
 
+@import "styles/main/main-colors";
+
+@import "styles/components/main";
+
+@import "styles/layout/layout";
+
 @import "styles/components/spinner";
+@import "styles/components/button-refresh";
 
 @import "styles/abstract/variables";

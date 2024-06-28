@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WeatherService } from "../../services/api/weather.service";
-import { map, Observable } from "rxjs";
+import { Observable, tap } from "rxjs";
 import { WeatherCurrent } from "../../models/weather";
+import { LocalStorageService } from "../../services/local-storage/local-storage.service";
 
 /**
  * Component responsible for displaying current weather information.
@@ -15,13 +16,13 @@ import { WeatherCurrent } from "../../models/weather";
 })
 export class DataGetTempComponent {
 
-  public weatherService = inject(WeatherService)
+  private weatherService = inject(WeatherService)
+  private _localStorageService = inject(LocalStorageService)
 
   // Observable holding weather data
   weatherData$: Observable<WeatherCurrent[]> = this.weatherService.getWeatherCurrent().pipe(
-    map(data => {
-      // Transform data to an array containing the first element and that is weather
-      return [data[0]]
+    tap(data => {
+      return this._localStorageService.saveDataToLocalStorage(data);
     })
   )
 

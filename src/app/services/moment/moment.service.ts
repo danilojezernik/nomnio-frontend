@@ -15,11 +15,12 @@ export class MomentService {
    * @returns Object with formatted date and time
    */
   formatIsoDate(isoDateString: string): { date: string, time: string } {
-    const formattedDate = moment(isoDateString);
+    const formattedDate = moment(isoDateString)
     return {
       date: formattedDate.format("DD.MM.YYYY"),
       time: formattedDate.format("HH:mm")
     };
   }
+
 
 }

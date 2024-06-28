@@ -1,0 +1,75 @@
+.main-content {
+  padding: 60px 16px 16px 16px;
+  overflow-y: auto;
+  position: relative;
+  height:100%;
+}
+
+.city-time {
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.data-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+
+  .temp-section,
+  .forecast-section {
+    width: 50%;
+    background-color: #ffffff;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .temp-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .temp {
+      font-size: 3em;
+      font-weight: bold;
+      color: #2980b9;
+    }
+
+    .description {
+      font-size: 1.2em;
+      color: #555;
+    }
+
+    .min-max {
+      margin-top: 10px;
+      font-size: 1em;
+      color: #888;
+    }
+  }
+
+  .forecast-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .forecast {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 10px;
+
+      .day {
+        font-size: 1em;
+        color: #555;
+      }
+
+      .temp {
+        font-size: 1.2em;
+        color: #2980b9;
+      }
+    }
+  }
+}

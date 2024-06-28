@@ -1,0 +1,42 @@
+<div style="text-align: center; margin-bottom: 10px">
+
+  <!-- Using ng-container to handle asynchronous data -->
+  <ng-container *ngIf="weatherDataCity$ | async as data">
+    <!-- Iterate over each weather object in the data array -->
+    <div *ngFor="let weather of data.slice(0, 1)">
+      <!-- Display the name of the city -->
+      <p style="font-size: 3rem;" *ngIf="weather.main">{{ weather.name}}</p>
+
+      <img *ngIf="weather.weather && weather.weather[0].icon"
+           [src]="'assets/media/weather/' + weather.weather[0].icon + '.png'"
+           [alt]="weather.name">
+
+      <ng-container [ngSwitch]="weather.weather[0].description">
+
+        <ng-container *ngSwitchCase="'clear sky'">
+          <app-sun-svg></app-sun-svg>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'few clouds'">
+          <app-few-clouds-svg></app-few-clouds-svg>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'few clouds'">
+          <app-few-clouds-svg></app-few-clouds-svg>
+        </ng-container>
+
+        <ng-container *ngSwitchDefault>
+          <app-few-clouds-svg></app-few-clouds-svg>
+        </ng-container>
+
+      </ng-container>
+
+
+
+
+    </div>
+
+    <!-- Display formatted date and time of the last update using WeatherService -->
+    {{ weatherService.formattedDateTime.date }} ob {{ weatherService.formattedDateTime.time }}
+  </ng-container>
+</div>

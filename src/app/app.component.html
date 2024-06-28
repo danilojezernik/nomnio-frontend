@@ -1,19 +1,29 @@
+<body>
 <!-- Component showing fixed header -->
-<app-header style="position: fixed; width: 100%; z-index: 100;"></app-header>
+<app-header style="position: fixed; width: 100%; z-index: 100;">Weather App</app-header>
 
 <!-- Adding padding and height -->
-<div style="padding: 16px 16px 16px 16px; overflow-y: auto; position: relative; top: 44px; height: calc(100vh - 16px);">
+<div class="main-content">
   <!-- Component showing name of the city and time of a refresh -->
-  <app-data-get-time></app-data-get-time>
+  <div class="city-time">
+    <app-data-get-time />
+  </div>
 
-  <!-- Component showing current temp, temp_max, temp_min and description -->
-  <app-data-get-temp></app-data-get-temp>
+  <div class="data-container">
+    <!-- Component showing current temp, temp_max, temp_min and description -->
+    <div class="temp-section">
+      <app-data-get-temp />
+    </div>
 
-  <!-- Component showing 5 day forecast -->
-  <app-data-get-forecast></app-data-get-forecast>
+    <!-- Component showing 5 day forecast -->
+    <div class="forecast-section">
+      <app-data-get-forecast />
+    </div>
+  </div>
 
-  <!-- Conditionally show the spinner -->
-  <app-spinner *ngIf="spinner"></app-spinner>
+  <!-- Refresh data button -->
+  <div class="refresh-button">
+    <app-refresh-button />
+  </div>
 </div>
-
-
+</body>
