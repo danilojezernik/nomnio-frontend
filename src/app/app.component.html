@@ -1,29 +1,50 @@
-<body>
-<!-- Component showing fixed header -->
-<app-header style="position: fixed; width: 100%; z-index: 100;">Weather App</app-header>
+<!-- Main container START -->
+<div class="container">
 
-<!-- Adding padding and height -->
-<div class="main-content">
-  <!-- Component showing name of the city and time of a refresh -->
-  <div class="city-time">
-    <app-data-get-time />
+  <!-- Header section START -->
+  <div class="header shadow">
+    <app-header></app-header>
   </div>
+  <!-- Header section END -->
 
-  <div class="data-container">
-    <!-- Component showing current temp, temp_max, temp_min and description -->
-    <div class="temp-section">
-      <app-data-get-temp />
-    </div>
+  <!-- Content positioning section START -->
+  <div class="content-position">
+    <!-- Main content START -->
+    <div class="content">
 
-    <!-- Component showing 5 day forecast -->
-    <div class="forecast-section">
-      <app-data-get-forecast />
+      <!-- Timestamp section START -->
+      <div class="timestamp shadow">
+        <app-data-get-time></app-data-get-time>
+      </div>
+      <!-- Timestamp section END -->
+
+      <!-- Info and forecast container START -->
+      <div class="info-container">
+
+        <!-- Info section START -->
+        <div class="info shadow">
+          <app-data-get-temp></app-data-get-temp>
+        </div>
+        <!-- Info section END -->
+
+        <!-- Forecast section START -->
+        <div class="forecast shadow">
+          <app-data-get-forecast></app-data-get-forecast>
+        </div>
+        <!-- Forecast section END -->
+
+      </div>
+      <!-- Info and forecast container END -->
     </div>
+    <!-- Main content END -->
   </div>
+  <!-- Content positioning section END -->
 
-  <!-- Refresh data button -->
+  <!-- Refresh button section START -->
   <div class="refresh-button">
-    <app-refresh-button />
+    <app-refresh-button></app-refresh-button>
   </div>
+  <!-- Refresh button section END -->
+
 </div>
-</body>
+<!-- Main container END -->

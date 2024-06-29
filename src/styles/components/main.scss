@@ -1,75 +1,120 @@
-.main-content {
-  padding: 60px 16px 16px 16px;
-  overflow-y: auto;
-  position: relative;
-  height:100%;
+/* Main container styling */
+.container {
+  width: 100%; /* Full width */
+  height: 404px; /* Fixed height */
+  margin: 0 auto; /* Center container */
+  display: flex; /* Flexbox for layout */
+  flex-direction: column; /* Column direction for children */
 }
 
-.city-time {
-  margin-bottom: 20px;
-  font-size: 1.2em;
-  color: #555;
+/* Main content position */
+.content-position {
+  display: flex; /* Flexbox for layout */
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
 }
 
-.data-container {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  width: 100%;
+/* Header styling */
+.header {
+  height: 44px; /* Fixed height */
+  margin: 0 auto; /* Center header */
+  background-color: #e86e1e; /* Background color */
+  color: #fff; /* Text color */
+  display: flex; /* Flexbox for inner alignment */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  position: fixed; /* Fixed position */
+  width: 100%; /* Full width */
+  top: 0; /* Position at the top */
+}
 
-  .temp-section,
-  .forecast-section {
-    width: 50%;
-    background-color: #ffffff;
-    padding: 16px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+/* Main content area styling */
+.content {
+  /* border: 1px solid #000; Uncomment to add a border for debugging */
+  max-width: 320px; /* Max width for content */
+  margin: 60px 16px 0 16px; /* Margin to create space from top and center horizontally */
+  flex: 1; /* Flexible grow */
+  display: flex; /* Flexbox for layout */
+  flex-direction: column; /* Column direction for children */
+  align-items: center; /* Center items horizontally */
+}
+
+/* Timestamp section styling */
+.timestamp {
+  width: 100%; /* Full width */
+  text-align: center; /* Center text */
+  margin-bottom: 16px; /* Margin below element */
+  padding: 16px 0; /* Padding top and bottom */
+  background-color: #e86e1e; /* Background color */
+  color: #fff; /* Text color */
+  border-radius: 4px; /* Rounded corners */
+}
+
+/* Container for info and forecast sections */
+.info-container {
+  display: flex; /* Flexbox for layout */
+  justify-content: space-between; /* Space elements evenly */
+  width: 100%; /* Full width */
+  gap: 6px; /* Gap between items */
+}
+
+/* Info section styling */
+.info {
+  width: 100%; /* Full width */
+  height: 110px; /* Fixed height */
+  padding: 8px; /* Padding for inner spacing */
+  border: 1px solid #000; /* Border color and width */
+  background-color: silver; /* Background color */
+  border-radius: 4px; /* Rounded corners */
+  text-align: center; /* Center text */
+}
+
+/* Box shadow styling */
+.shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Adding box shadow */
+}
+
+/* Forecast section styling */
+.forecast {
+  width: 100%; /* Full width */
+  overflow-y: auto; /* Enable vertical scrolling */
+  height: 290px; /* Fixed height */
+  padding: 8px; /* Padding for inner spacing */
+  border: 1px solid #000; /* Border color and width */
+  background-color: silver; /* Background color */
+  border-radius: 4px; /* Rounded corners */
+  text-align: center; /* Center text */
+}
+
+/* Responsive styling for small screens */
+@media (max-width: 319px) {
+  .content {
+    margin: 60px 0 0 0; /* Adjust margin for small screens */
   }
 
-  .temp-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    .temp {
-      font-size: 3em;
-      font-weight: bold;
-      color: #2980b9;
-    }
-
-    .description {
-      font-size: 1.2em;
-      color: #555;
-    }
-
-    .min-max {
-      margin-top: 10px;
-      font-size: 1em;
-      color: #888;
-    }
+  .info, .forecast {
+    width: 100%; /* Full width */
+    padding: 8px 0; /* Padding top and bottom */
   }
 
-  .forecast-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .info-container {
+    flex-direction: column; /* Stack items vertically */
+  }
+}
 
-    .forecast {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      margin-bottom: 10px;
+/* Responsive styling for large screens */
+@media (min-width: 768px) {
+  .header {
+    height: 56px; /* Increase header height for large screens */
+  }
 
-      .day {
-        font-size: 1em;
-        color: #555;
-      }
+  .content {
+    min-width: 460px; /* Minimum width for content */
+    margin-top: 72px; /* Adjust top margin */
+    padding: 16px 32px 32px 32px; /* Padding for inner spacing */
+  }
 
-      .temp {
-        font-size: 1.2em;
-        color: #2980b9;
-      }
-    }
+  .info-container {
+    flex-direction: row; /* Arrange items in a row */
   }
 }

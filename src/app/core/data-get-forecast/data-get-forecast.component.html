@@ -1,15 +1,23 @@
-<div style="background-color: #e86e1e;">
+<!-- Angular container to check if weatherForecastData$ is available and assign it to forecastData START -->
+<ng-container *ngIf="weatherForecastData$ | async as forecastData">
 
-  <ng-container *ngIf="weatherForecastData$ | async as forecastData">
-      <div *ngFor="let forecast of forecastData">
-        <p><strong>Date/Time:</strong> {{ forecast.dt | dateTransform }}</p>
-        <p><strong>Temperature:</strong> {{ forecast.main.temp }}°C</p>
-        <p><strong>Weather Description:</strong> {{ forecast.weather[0].description }}</p>
-        <img *ngIf="forecast.weather && forecast.weather[0].icon"
-             [src]="'assets/media/weather/' + forecast.weather[0].icon + '.png'" [alt]="forecast.weather[0].description">
-      </div>
+  <!-- Loop through each forecast in forecastData START -->
+  <div *ngFor="let forecast of forecastData">
 
-  </ng-container>
+    <!-- Display forecast date with dateTransform pipe -->
+    <p>{{ forecast.dt | dateTransform }}</p>
+    <!-- Display forecast temperature in Celsius -->
+    <p>{{ forecast.main.temp }}°C</p>
+    <!-- Display forecast weather description -->
+    <p>{{ forecast.weather[0].description }}</p>
 
+    <!-- Display forecast weather icon if available START -->
+    <img *ngIf="forecast.weather && forecast.weather[0].icon"
+         [src]="'assets/media/weather/' + forecast.weather[0].icon + '.png'" [alt]="forecast.weather[0].description">
+    <!-- Display forecast weather icon if available END -->
 
-</div>
+  </div>
+  <!-- Loop through each forecast in forecastData END -->
+
+</ng-container>
+<!-- Angular container to check if weatherForecastData$ is available and assign it to forecastData END -->

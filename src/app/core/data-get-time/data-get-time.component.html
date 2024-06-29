@@ -1,56 +1,17 @@
-<div style="text-align: center; margin-bottom: 10px">
+<!-- Angular container to check if weatherDataCity$ is available and assign it to data START -->
+<ng-container *ngIf="weatherDataCity$ | async as data">
 
-  <!-- Using ng-container to handle asynchronous data -->
-  <ng-container *ngIf="weatherDataCity$ | async as data">
-    <!-- Iterate over each weather object in the data array -->
-    <div *ngFor="let weather of data.slice(0, 1)">
-      <!-- Display the name of the city -->
-      <p style="font-size: 3rem;" *ngIf="weather.main">{{ weather.name}}</p>
+  <!-- Loop through each weather in data, but only take the first one START -->
+  <div *ngFor="let weather of data.slice(0, 1)">
 
-      <ng-container [ngSwitch]="weather.weather[0].description">
+    <!-- Display the name of the city if weather data is available -->
+    <p style="font-size: 2rem;" *ngIf="weather.main">{{ weather.name }}</p>
 
-        <ng-container *ngSwitchCase="'clear sky'">
-          <app-sun-svg/>
-        </ng-container>
+  </div>
+  <!-- Loop through each weather in data, but only take the first one END -->
 
-        <ng-container *ngSwitchCase="'few clouds'">
-          <app-few-clouds-svg/>
-        </ng-container>
+  <!-- Display formatted date and time of the last update using WeatherService -->
+  {{ weatherService.formattedDateTime.date }} ob {{ weatherService.formattedDateTime.time }}
 
-        <ng-container *ngSwitchCase="'scattered clouds'">
-          <app-scattered-clouds-svg/>
-        </ng-container>
-
-        <ng-container *ngSwitchCase="'broken clouds'">
-          <app-broken-clouds-svg/>
-        </ng-container>
-
-        <ng-container *ngSwitchCase="'shower rain'">
-          <app-rain-svg/>
-        </ng-container>
-
-        <ng-container *ngSwitchCase="'thunderstorm'">
-          <app-thunderstorm-svg/>
-        </ng-container>
-
-        <ng-container *ngSwitchCase="'snow'">
-          <app-snow-svg/>
-        </ng-container>
-
-        <ng-container *ngSwitchCase="'rain'">
-          <app-rain-svg/>
-        </ng-container>
-
-
-        <ng-container *ngSwitchDefault>
-          <app-few-clouds-svg/>
-        </ng-container>
-
-      </ng-container>
-
-    </div>
-
-    <!-- Display formatted date and time of the last update using WeatherService -->
-    {{ weatherService.formattedDateTime.date }} ob {{ weatherService.formattedDateTime.time }}
-  </ng-container>
-</div>
+</ng-container>
+<!-- Angular container to check if weatherDataCity$ is available and assign it to data END -->

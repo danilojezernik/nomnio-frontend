@@ -1,14 +1,21 @@
-<!-- Using ng-container to handle asynchronous data -->
+<!-- Angular container to check if weatherData$ is available and assign it to data START -->
 <ng-container *ngIf="weatherData$ | async as data">
-  <!-- Iterate over each weather object in the data array -->
-  <div style="text-align: center" *ngFor="let weather of data">
-    <!-- Display the temperature of the city -->
-    <span style="font-size: 3rem" *ngIf="weather.main">{{ weather.main.temp.toFixed(0) }}°</span>
 
+  <!-- Loop through each weather in data START -->
+  <div *ngFor="let weather of data">
+
+    <!-- Display the temperature of the city if available -->
+    <span class="font-size-3" *ngIf="weather.main">{{ weather.main.temp.toFixed(0) }}°</span>
+
+    <!-- Display the weather description in uppercase if available -->
     <p style="text-transform: uppercase; font-size: 1rem; padding: 10px 0"
        *ngIf="weather.weather">{{ weather.weather[0].description }}</p>
 
-      <span *ngIf="weather.main">L: {{ weather.main.temp_min }} | H: {{ weather.main.temp_max }}</span>
+    <!-- Display the low and high temperatures of the city if available -->
+    <span *ngIf="weather.main">L: {{ weather.main.temp_min }} | H: {{ weather.main.temp_max }}</span>
 
   </div>
+  <!-- Loop through each weather in data END -->
+
 </ng-container>
+<!-- Using ng-container to handle asynchronous data END -->
