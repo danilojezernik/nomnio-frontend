@@ -18,6 +18,4 @@ export class DataGetForecastComponent{
   // Observable for weather forecast data fetched from WeatherService
   weatherForecastData$: Observable<Weather[]> = this._weatherService.getWeatherForecast();
 
-
-  protected readonly String = String;
 }
