@@ -33,9 +33,6 @@
 }
 
 .language-buttons button {
-  color: black;
-  background-color: white;
-  padding: 10px;
   margin-left: 10px; /* Adjust margin as needed for spacing */
 }
 
@@ -129,3 +126,12 @@
     flex-direction: row; /* Arrange items in a row */
   }
 }
+
+/* Button reset style */
+.button-style-reset {
+  color: white;              /* White text color */
+  background-color: transparent; /* Transparent background */
+  padding: 10px;             /* Padding around the content */
+  border: 0;                 /* No border */
+}
+

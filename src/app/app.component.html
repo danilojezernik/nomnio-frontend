@@ -4,9 +4,15 @@
   <!-- Header section START -->
   <div class="header shadow">
     <app-header></app-header>
+
+    <!-- Button to change language START -->
     <div class="language-buttons">
-      <button style="color: white; background-color: transparent; padding: 10px; border: 0" (click)="toggleLanguage()">- Prevedi v {{ getCurrentLanguageText() }}</button>
+      <button class="button-style-reset" (click)="toggleLanguageClick()">
+        - Prevedi v {{ getCurrentLanguageTextOnButton() }}
+      </button>
     </div>
+    <!-- Button to change language END -->
+
   </div>
   <!-- Header section END -->
 
