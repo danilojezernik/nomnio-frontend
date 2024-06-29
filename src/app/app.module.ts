@@ -9,22 +9,25 @@ import { DataGetForecastComponent } from "./core/data-get-forecast/data-get-fore
 import { HeaderComponent } from "./core/header/header.component";
 import { SpinnerComponent } from "./shared/components/spinner/spinner.component";
 import { RefreshButtonComponent } from "./shared/components/refresh-button/refresh-button.component";
+import { DateTransformPipe } from './pipes/date-transform.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        DataGetTimeComponent,
-        DataGetTempComponent,
-        DataGetForecastComponent,
-        HeaderComponent,
-        SpinnerComponent,
-        RefreshButtonComponent
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    DataGetTimeComponent,
+    DataGetTempComponent,
+    DataGetForecastComponent,
+    HeaderComponent,
+    SpinnerComponent,
+    RefreshButtonComponent,
+    DateTransformPipe
+  ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+}

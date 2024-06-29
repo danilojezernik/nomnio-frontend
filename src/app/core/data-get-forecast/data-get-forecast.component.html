@@ -2,7 +2,7 @@
 
   <ng-container *ngIf="weatherForecastData$ | async as forecastData">
       <div *ngFor="let forecast of forecastData">
-        <p><strong>Date/Time:</strong> {{ forecast.dt }}</p>
+        <p><strong>Date/Time:</strong> {{ forecast.dt | dateTransform }}</p>
         <p><strong>Temperature:</strong> {{ forecast.main.temp }}°C</p>
         <p><strong>Weather Description:</strong> {{ forecast.weather[0].description }}</p>
         <img *ngIf="forecast.weather && forecast.weather[0].icon"
