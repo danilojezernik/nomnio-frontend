@@ -9,7 +9,7 @@
 
     <!-- Display the weather description in uppercase if available -->
     <p style="text-transform: uppercase; font-size: 1rem; padding: 10px 0"
-       *ngIf="weather.weather">{{ weather.weather[0].description }}</p>
+       *ngIf="weather.weather">{{ weather.weather[0].description | translate }}</p>
 
     <!-- Display the low and high temperatures of the city if available -->
     <span *ngIf="weather.main">L: {{ weather.main.temp_min }} | H: {{ weather.main.temp_max }}</span>

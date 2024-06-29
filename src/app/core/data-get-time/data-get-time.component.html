@@ -5,13 +5,13 @@
   <div *ngFor="let weather of data.slice(0, 1)">
 
     <!-- Display the name of the city if weather data is available -->
-    <p style="font-size: 2rem;" *ngIf="weather.main">{{ weather.name | translate }}</p>
+    <p style="font-size: 2rem;" *ngIf="weather.main">{{ weather.name }}</p>
 
   </div>
   <!-- Loop through each weather in data, but only take the first one END -->
 
   <!-- Display formatted date and time of the last update using WeatherService -->
-  {{ weatherService.formattedDateTime.date }} ob {{ weatherService.formattedDateTime.time }}
+  {{ weatherService.formattedDateTime.date }} {{ 'at' | translate}} {{ weatherService.formattedDateTime.time }}
 
 </ng-container>
 <!-- Angular container to check if weatherDataCity$ is available and assign it to data END -->

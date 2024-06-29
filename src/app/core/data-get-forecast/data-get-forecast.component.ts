@@ -4,11 +4,12 @@ import { WeatherService } from "../../services/api/weather.service";
 import { Observable } from "rxjs";
 import { Weather } from "../../models/weather";
 import { DateTransformPipe } from "../../pipes/date-transform.pipe";
+import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
   selector: 'app-data-get-forecast',
   standalone: true,
-  imports: [ CommonModule, DateTransformPipe ],
+  imports: [ CommonModule, DateTransformPipe, TranslateModule ],
   templateUrl: './data-get-forecast.component.html'
 })
 export class DataGetForecastComponent{
