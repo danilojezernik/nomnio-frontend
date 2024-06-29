@@ -1,10 +1,59 @@
-Main Page
+<!-- Main container START -->
+<div class="container">
 
-<!-- Component showing name of the city and time of a refresh -->
-<app-data-get-time></app-data-get-time>
+  <!-- Header section START -->
+  <div class="header shadow">
+    <app-header></app-header>
 
-<!-- Component showing current temp, temp_max, temp_min and description -->
-<app-data-get-temp></app-data-get-temp>
+    <!-- Button to change language START -->
+    <div class="language-buttons">
+      <button class="button-style-reset" (click)="toggleLanguageClick()">
+        - Prevedi v {{ getCurrentLanguageTextOnButton() }}
+      </button>
+    </div>
+    <!-- Button to change language END -->
 
-<!-- Component showing 5 day forecast -->
-<app-data-get-forecast></app-data-get-forecast>
+  </div>
+  <!-- Header section END -->
+
+  <!-- Content positioning section START -->
+  <div class="content-position">
+    <!-- Main content START -->
+    <div class="content">
+
+      <!-- Timestamp section START -->
+      <div class="timestamp shadow">
+        <app-data-get-time></app-data-get-time>
+      </div>
+      <!-- Timestamp section END -->
+
+      <!-- Info and forecast container START -->
+      <div class="info-container">
+
+        <!-- Info section START -->
+        <div class="info shadow">
+          <app-data-get-temp></app-data-get-temp>
+        </div>
+        <!-- Info section END -->
+
+        <!-- Forecast section START -->
+        <div class="forecast shadow">
+          <app-data-get-forecast></app-data-get-forecast>
+        </div>
+        <!-- Forecast section END -->
+
+      </div>
+      <!-- Info and forecast container END -->
+    </div>
+    <!-- Main content END -->
+  </div>
+  <!-- Content positioning section END -->
+
+  <!-- Refresh button section START -->
+  <div class="refresh-button">
+    <app-refresh-button></app-refresh-button>
+  </div>
+  <!-- Refresh button section END -->
+
+</div>
+<!-- Main container END -->

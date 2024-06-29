@@ -1,4 +1,12 @@
-/*
-Header background primary color
-*/
-$color-header: #e86e1e;
+/* Apply Montserrat font to all elements with a fallback to sans-serif, set base font size, and reset padding and margin */
+* {
+  font-family:"Montserrat", sans-serif ;
+  font-size: 0.9rem;
+  padding: 0;
+  margin: 0;
+}
+
+/* Font size city */
+.font-size-3 {
+  font-size: 3rem;
+}

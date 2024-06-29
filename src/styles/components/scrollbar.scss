@@ -1,0 +1,24 @@
+/* Webkit browsers (Chrome, Safari, Edge) */
+
+/* Style the width of the scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Set the width of the scrollbar */
+}
+
+/* Style the track (background) of the scrollbar */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Set the background color of the track */
+  border-radius: 4px; /* Add rounded corners to the track */
+}
+
+/* Style the draggable part of the scrollbar (thumb) */
+::-webkit-scrollbar-thumb {
+  background: #e86e1e; /* Set the background color of the thumb */
+  border-radius: 4px; /* Add rounded corners to the thumb */
+  border: 1px solid #f1f1f1; /* Add a border to the thumb */
+}
+
+/* Change the color of the scrollbar thumb when hovered */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Set the background color of the thumb when hovered */
+}

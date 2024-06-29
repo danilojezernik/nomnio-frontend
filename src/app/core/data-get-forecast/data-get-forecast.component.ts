@@ -1,20 +1,22 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WeatherService } from "../../services/api/weather.service";
-import { WeatherForecast } from "../../models/weather";
 import { Observable } from "rxjs";
+import { Weather } from "../../models/weather";
+import { DateTransformPipe } from "../../pipes/date-transform.pipe";
+import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
   selector: 'app-data-get-forecast',
   standalone: true,
-  imports: [CommonModule],
+  imports: [ CommonModule, DateTransformPipe, TranslateModule ],
   templateUrl: './data-get-forecast.component.html'
 })
-export class DataGetForecastComponent {
+export class DataGetForecastComponent{
 
   private _weatherService = inject(WeatherService)
 
   // Observable for weather forecast data fetched from WeatherService
-  forecasts: Observable<WeatherForecast[]>= this._weatherService.getWeatherForecast()
+  weatherForecastData$: Observable<Weather[]> = this._weatherService.getWeatherForecast();
 
 }

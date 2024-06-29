@@ -1,2 +1,44 @@
-@import "../global";
+.svg{
+  width: 100px;
+  height: 100px;
+  display:inline-block;
+  padding:0;
+  transform:rotate(90deg);
+  -webkit-transform:rotate(90deg);
+}
 
+.circle {
+  fill: transparent;
+  stroke: #55acee;
+  stroke-width:3px;
+  -webkit-animation: 1.5s circle infinite ease-in;
+  animation: 1.5s circle infinite ease-in;
+}
+
+@keyframes circle {
+  0% {
+    stroke-dasharray:0 400;
+    stroke-dashoffset: 0;
+  }
+  25%{
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray:400 400;
+    stroke-dashoffset: -400;
+  }
+}
+
+@-webkit-keyframes circle {
+  0% {
+    stroke-dasharray:0 400;
+    stroke-dashoffset: 0;
+  }
+  25%{
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray:400 400;
+    stroke-dashoffset: -400;
+  }
+}

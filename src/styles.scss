@@ -1,1 +1,20 @@
+/* Import global styles */
 @import "styles/global";
+
+/* Import main color styles */
+@import "styles/main/main-colors";
+
+/* Import layout styles */
+@import "styles/layout/layout";
+
+/* Import main component styles */
+@import "styles/components/main";
+/* Import component styles for spinner */
+@import "styles/components/spinner";
+/* Import component styles for refresh button */
+@import "styles/components/button-refresh";
+/* Import component styles for scrollbar */
+@import "styles/components/scrollbar";
+
+/* Import abstract styles for variables */
+@import "styles/abstract/variables";
