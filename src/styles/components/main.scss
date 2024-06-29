@@ -28,6 +28,17 @@
   top: 0; /* Position at the top */
 }
 
+.language-buttons {
+  display: flex; /* Flexbox for buttons */
+}
+
+.language-buttons button {
+  color: black;
+  background-color: white;
+  padding: 10px;
+  margin-left: 10px; /* Adjust margin as needed for spacing */
+}
+
 /* Main content area styling */
 .content {
   /* border: 1px solid #000; Uncomment to add a border for debugging */

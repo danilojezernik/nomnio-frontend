@@ -5,7 +5,7 @@
   <div *ngFor="let weather of data.slice(0, 1)">
 
     <!-- Display the name of the city if weather data is available -->
-    <p style="font-size: 2rem;" *ngIf="weather.main">{{ weather.name }}</p>
+    <p style="font-size: 2rem;" *ngIf="weather.main">{{ weather.name | translate }}</p>
 
   </div>
   <!-- Loop through each weather in data, but only take the first one END -->

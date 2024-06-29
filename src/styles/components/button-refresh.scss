@@ -1,5 +1,5 @@
 /* Styling for the button element */
-button {
+.button {
   position: fixed; /* Fix the button's position on the screen */
   bottom: 0; /* Position at the bottom of the viewport */
   left: 0; /* Position at the left of the viewport */
@@ -19,12 +19,12 @@ button {
 }
 
 /* Reduce the button size when active (clicked) */
-button:active {
+.button:active {
   transform: scale(0.95); /* Scale down the button */
 }
 
 /* Pseudo-element before the button content */
-button::before {
+.button::before {
   content: ''; /* Empty content */
   position: absolute; /* Absolute positioning */
   inset: -1px 10px; /* Positioning relative to the button */
@@ -35,12 +35,12 @@ button::before {
 }
 
 /* Expand the pseudo-element on hover */
-button:hover::before {
+.button:hover::before {
   inset: -1px; /* Adjust positioning */
 }
 
 /* Pseudo-element after the button content */
-button::after {
+.button::after {
   content: ''; /* Empty content */
   position: absolute; /* Absolute positioning */
   inset: 3px; /* Positioning relative to the button */
