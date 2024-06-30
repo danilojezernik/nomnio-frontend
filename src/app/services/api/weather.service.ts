@@ -1,10 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { map, Observable, of, tap } from "rxjs";
+import { catchError, map, Observable, of, tap } from "rxjs";
 import { Weather, WeatherCurrent, WeatherForecast } from "../../models/weather";
 import { environment } from "../../../environments/environment";
 import { MomentService } from "../moment/moment.service";
 import { LOCAL_STORAGE_KEYS } from "../../shared/global-variables/global-variables";
+import { ErrorHandleService } from "../error-handle/error-handle.service";
 
 /**
  * Service to get weather data from backend API
@@ -18,13 +19,15 @@ export class WeatherService {
 
   private _http = inject(HttpClient);
   public _momentService = inject(MomentService);
+  private _errorHandleService = inject(ErrorHandleService);
 
   /**
    * Retrieves current weather data from the backend API or local storage
    * @returns Observable<WeatherCurrent[]> Observable emitting an array of current weather data
    */
   getWeatherCurrent(): Observable<WeatherCurrent[]> {
-    const dataInLocalStorage = localStorage.getItem(LOCAL_STORAGE_KEYS.WEATHER_DATA);
+
+    const dataInLocalStorage = localStorage.getItem(LOCAL_STORAGE_KEYS.WEATHER_DATA_CURRENT);
 
     if (dataInLocalStorage) {
       // If data exists in local storage, log and return it
@@ -39,9 +42,16 @@ export class WeatherService {
          * Tap into the observable stream without modifying it,
          * then get current ISO date and format ISO date using Moment service
          */
+        tap(_ => console.log('Data fetched from API')),
         tap(_ => {
           this.getCurrentDateAndTime();
-        })
+        }),
+        /**
+         * Use catchError to handle any errors that occur during the HTTP request
+         * @param error - the error response from the HTTP request
+         * @returns Observable that throws a custom error message
+         */
+        catchError(this._errorHandleService.handleError)
       );
     }
   }
@@ -59,8 +69,24 @@ export class WeatherService {
    * @returns Observable<Weather[]> Observable emitting an array of weather forecast data
    */
   getWeatherForecast(): Observable<Weather[]> {
-    return this._http.get<WeatherForecast[]>(`${environment.urlLocalForecast}`).pipe(
-      map(data => data[0].list)
-    );
+    const dataInLocalStorage = localStorage.getItem(LOCAL_STORAGE_KEYS.WEATHER_DATA_FORECAST);
+
+    if (dataInLocalStorage) {
+      // If data exists in local storage, log and return it
+      console.log('Data fetched from local storage');
+      this.getCurrentDateAndTime();
+      return of(JSON.parse(dataInLocalStorage));
+    } else {
+
+      return this._http.get<WeatherForecast[]>(`${environment.urlLocalForecast}`).pipe(
+        map(data => data[0].list),
+        /**
+         * Use catchError to handle any errors that occur during the HTTP request
+         * @param error - the error response from the HTTP request
+         * @returns Observable that throws a custom error message
+         */
+        catchError(this._errorHandleService.handleError)
+      );
+    }
   }
 }

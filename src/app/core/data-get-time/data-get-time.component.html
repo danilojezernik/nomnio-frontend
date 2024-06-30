@@ -1,17 +1,34 @@
-<!-- Angular container to check if weatherDataCity$ is available and assign it to data START -->
-<ng-container *ngIf="weatherDataCity$ | async as data">
+<!-- Angular container to check if weatherDataCity$ is available and assign it to cityData START -->
+<ng-container *ngIf="weatherDataCity$ | async as cityData; else loadingData">
 
-  <!-- Loop through each weather in data, but only take the first one START -->
-  <div *ngFor="let weather of data.slice(0, 1)">
+  <ng-container *ngIf="cityData.length > 0">
 
-    <!-- Display the name of the city if weather data is available -->
-    <p style="font-size: 2rem;" *ngIf="weather.main">{{ weather.name }}</p>
+    <!-- Loop through each weather in data, but only take the first one START -->
+    <div *ngFor="let weather of cityData.slice(0, 1)">
 
-  </div>
+      <!-- Display the name of the city if weather data is available -->
+      <p style="font-size: 2rem;" *ngIf="weather.main">{{ weather.name }}</p>
+
+    </div>
+  </ng-container>
   <!-- Loop through each weather in data, but only take the first one END -->
+
+  <!-- Display error message if forecastData is empty START -->
+  <ng-container *ngIf="cityData.length === 0" class="error-container">
+    <span class="error-message">
+      {{ errorMessage }}
+    </span>
+  </ng-container>
+  <!-- Display error message if forecastData is empty END -->
 
   <!-- Display formatted date and time of the last update using WeatherService -->
   {{ weatherService.formattedDateTime.date }} {{ 'at' | translate}} {{ weatherService.formattedDateTime.time }}
 
 </ng-container>
-<!-- Angular container to check if weatherDataCity$ is available and assign it to data END -->
+<!-- Angular container to check if weatherDataCity$ is available and assign it to cityData END -->
+
+<!-- Display spinner while data is loading START -->
+<ng-template #loadingData>
+  <app-spinner *ngIf="spinner"></app-spinner>
+</ng-template>
+<!-- Display spinner while data is loading END -->

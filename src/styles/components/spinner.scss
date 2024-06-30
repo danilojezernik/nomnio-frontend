@@ -1,44 +1,48 @@
-.svg{
-  width: 100px;
-  height: 100px;
-  display:inline-block;
-  padding:0;
-  transform:rotate(90deg);
-  -webkit-transform:rotate(90deg);
+/* Styles for SVG elements */
+.svg {
+  width: 75px; /* Width of the SVG */
+  height: 75px; /* Height of the SVG */
+  display: inline-block; /* Display as inline-block */
+  padding: 0; /* No padding */
+  transform: rotate(90deg); /* Rotate 90 degrees */
+  -webkit-transform: rotate(90deg); /* Rotate 90 degrees for WebKit browsers */
 }
 
+/* Animation styles for the circle */
 .circle {
-  fill: transparent;
-  stroke: #55acee;
-  stroke-width:3px;
-  -webkit-animation: 1.5s circle infinite ease-in;
-  animation: 1.5s circle infinite ease-in;
+  fill: transparent; /* Transparent fill */
+  stroke: #e86e1e; /* Stroke color */
+  stroke-width: 10px; /* Stroke width */
+  -webkit-animation: 1.5s circle infinite ease-in; /* WebKit animation for compatibility */
+  animation: 1.5s circle infinite ease-in; /* Standard animation */
 }
 
+/* Keyframes for the circle animation */
 @keyframes circle {
   0% {
-    stroke-dasharray:0 400;
-    stroke-dashoffset: 0;
+    stroke-dasharray: 0 400; /* No stroke initially */
+    stroke-dashoffset: 0; /* Start offset */
   }
-  25%{
-    stroke-dashoffset: 0;
+  25% {
+    stroke-dashoffset: 0; /* Maintain offset */
   }
   100% {
-    stroke-dasharray:400 400;
-    stroke-dashoffset: -400;
+    stroke-dasharray: 400 400; /* Full stroke */
+    stroke-dashoffset: -400; /* Offset to animate */
   }
 }
 
+/* WebKit keyframes for circle animation */
 @-webkit-keyframes circle {
   0% {
-    stroke-dasharray:0 400;
-    stroke-dashoffset: 0;
+    stroke-dasharray: 0 400; /* No stroke initially */
+    stroke-dashoffset: 0; /* Start offset */
   }
-  25%{
-    stroke-dashoffset: 0;
+  25% {
+    stroke-dashoffset: 0; /* Maintain offset */
   }
   100% {
-    stroke-dasharray:400 400;
-    stroke-dashoffset: -400;
+    stroke-dasharray: 400 400; /* Full stroke */
+    stroke-dashoffset: -400; /* Offset to animate */
   }
 }

@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
-import { LOCAL_STORAGE_KEYS } from "../../shared/global-variables/global-variables";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
 
-  saveDataToLocalStorage(data: any) {
-    localStorage.setItem(LOCAL_STORAGE_KEYS.WEATHER_DATA, JSON.stringify(data))
+  /**
+   * Saves data to local storage.
+   * @param storage The key under which to save the data in local storage.
+   * @param data The data to be saved.
+   */
+  saveDataToLocalStorage(storage: string, data: any) {
+    localStorage.setItem(storage, JSON.stringify(data)); // Convert data to JSON string and store in local storage
   }
 
 }

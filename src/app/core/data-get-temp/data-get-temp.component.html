@@ -1,8 +1,10 @@
 <!-- Angular container to check if weatherData$ is available and assign it to data START -->
-<ng-container *ngIf="weatherData$ | async as data">
+<ng-container *ngIf="weatherCurrentData$ | async as currentData; else loadingData">
+
+  <ng-container *ngIf="currentData.length > 0">
 
   <!-- Loop through each weather in data START -->
-  <div *ngFor="let weather of data">
+  <div *ngFor="let weather of currentData">
 
     <!-- Display the temperature of the city if available -->
     <span class="font-size-3" *ngIf="weather.main">{{ weather.main.temp.toFixed(0) }}°</span>
@@ -16,6 +18,19 @@
 
   </div>
   <!-- Loop through each weather in data END -->
-
+  </ng-container>
+  <!-- Display error message if forecastData is empty START -->
+  <ng-container *ngIf="currentData.length === 0" class="error-container">
+    <span class="error-message">
+      {{ errorMessage }}
+    </span>
+  </ng-container>
+  <!-- Display error message if forecastData is empty END -->
 </ng-container>
 <!-- Using ng-container to handle asynchronous data END -->
+
+<!-- Display spinner while data is loading START -->
+<ng-template #loadingData>
+  <app-spinner *ngIf="spinner"></app-spinner>
+</ng-template>
+<!-- Display spinner while data is loading END -->
