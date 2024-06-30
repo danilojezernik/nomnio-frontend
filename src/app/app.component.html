@@ -8,7 +8,7 @@
     <!-- Button to change language START -->
     <div class="language-buttons">
       <button class="button-style-reset" (click)="toggleLanguageClick()">
-        - Prevedi v {{ getCurrentLanguageTextOnButton() }}
+        {{ getCurrentLanguageTextOnButton() }}
       </button>
     </div>
     <!-- Button to change language END -->
@@ -31,7 +31,7 @@
       <div class="info-container">
 
         <!-- Info section START -->
-        <div class="info shadow">
+        <div class="info">
           <app-data-get-temp></app-data-get-temp>
         </div>
         <!-- Info section END -->

@@ -58,3 +58,16 @@
     transform: rotate(360deg); /* Full rotation */
   }
 }
+
+/* Button reset style */
+.button-style-reset {
+  color: black;              /* White text color */
+  background-color: white; /* Transparent background */
+  padding: 10px;             /* Padding around the content */
+  border: 0;                 /* No border */
+}
+
+/* Border bottom but not in last child */
+.border-bottom:not(:last-child) {
+  border-bottom: 1px solid #c4c4c4;
+}

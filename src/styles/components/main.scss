@@ -1,6 +1,5 @@
 /* Main container styling */
 .container {
-  width: 100%; /* Full width */
   height: 404px; /* Fixed height */
   margin: 0 auto; /* Center container */
   display: flex; /* Flexbox for layout */
@@ -53,8 +52,7 @@
   text-align: center; /* Center text */
   margin-bottom: 16px; /* Margin below element */
   padding: 16px 0; /* Padding top and bottom */
-  background-color: #e86e1e; /* Background color */
-  color: #fff; /* Text color */
+  background: radial-gradient(circle, rgb(246, 198, 167) 0%, rgba(244,201,173,1) 64%, rgb(236, 163, 116) 100%);
   border-radius: 4px; /* Rounded corners */
 }
 
@@ -71,15 +69,13 @@
   width: 100%; /* Full width */
   height: 110px; /* Fixed height */
   padding: 8px; /* Padding for inner spacing */
-  border: 1px solid #000; /* Border color and width */
-  background-color: silver; /* Background color */
   border-radius: 4px; /* Rounded corners */
   text-align: center; /* Center text */
 }
 
 /* Box shadow styling */
 .shadow {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Adding box shadow */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7); /* Adding box shadow */
 }
 
 /* Forecast section styling */
@@ -88,9 +84,8 @@
   overflow-y: auto; /* Enable vertical scrolling */
   height: 290px; /* Fixed height */
   padding: 8px; /* Padding for inner spacing */
-  border: 1px solid #000; /* Border color and width */
-  background-color: silver; /* Background color */
   border-radius: 4px; /* Rounded corners */
+  background-color: white; /* Fallback color */
   text-align: center; /* Center text */
 }
 
@@ -102,7 +97,8 @@
 
   .info, .forecast {
     width: 100%; /* Full width */
-    padding: 8px 0; /* Padding top and bottom */
+    border-radius: 0;
+    padding: 8px 8px; /* Padding top and bottom */
   }
 
   .info-container {
@@ -127,11 +123,4 @@
   }
 }
 
-/* Button reset style */
-.button-style-reset {
-  color: white;              /* White text color */
-  background-color: transparent; /* Transparent background */
-  padding: 10px;             /* Padding around the content */
-  border: 0;                 /* No border */
-}
 

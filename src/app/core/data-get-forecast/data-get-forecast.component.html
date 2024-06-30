@@ -3,22 +3,37 @@
 
   <ng-container *ngIf="forecastData.length > 0">
     <!-- Loop through each forecast in forecastData START -->
-    <div *ngFor="let forecast of forecastData">
+    <div id="style" style="padding-bottom: 5px" class="flex flex-column border-bottom" *ngFor="let forecast of forecastData">
 
-      <!-- Display forecast date with dateTransform pipe -->
-      <p>{{ forecast.dt | dateTransform }}</p>
+      <!-- Row with datat START -->
+      <div class="flex flex-row justify-content-between align-items-center padding-2-0">
+        <!-- Display forecast date with dateTransform pipe -->
+        <div>
+          <p class="bolder">{{ forecast.dt | dateTransform }}</p>
+          <p>{{ forecast.weather[0].description | translate }}</p>
+          <p class="bolder">{{ forecast.main.temp.toFixed(0) }}°C</p>
+        </div>
 
-      <!-- Display forecast temperature in Celsius -->
-      <p>{{ forecast.main.temp }}°C</p>
+        <!-- Display forecast temperature in Celsius -->
+        <div>
 
-      <!-- Display forecast weather description -->
-      <p>{{ forecast.weather[0].description | translate }}</p>
+          <!-- Display forecast weather icon if available START -->
+          <img style="width: 35px; height: 35px" *ngIf="forecast.weather && forecast.weather[0].icon"
+               [src]="'assets/media/weather/' + forecast.weather[0].icon + '.png'"
+               [alt]="forecast.weather[0].description">
+          <!-- Display forecast weather icon if available END -->
+        </div>
 
-      <!-- Display forecast weather icon if available START -->
-      <img *ngIf="forecast.weather && forecast.weather[0].icon"
-           [src]="'assets/media/weather/' + forecast.weather[0].icon + '.png'"
-           [alt]="forecast.weather[0].description">
-      <!-- Display forecast weather icon if available END -->
+        <!-- Display forecast weather description -->
+
+
+      </div>
+      <!-- Row with datat END -->
+
+      <!-- Description of the weather START -->
+
+      <!-- Description of the weather END -->
+
 
     </div>
     <!-- Loop through each forecast in forecastData END -->
