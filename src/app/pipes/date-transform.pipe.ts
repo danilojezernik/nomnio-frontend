@@ -12,20 +12,23 @@ import { MomentService } from "../services/moment/moment.service";
 export class DateTransformPipe implements PipeTransform {
 
   // Inject the MomentService to use its date formatting methods
-  public _momentService = inject(MomentService);
+  private _momentService = inject(MomentService);
 
   /**
-   * Transforms a timestamp into a formatted date string using MomentService.
-   * @param value The timestamp to transform.
+   * Transforms a UNIX timestamp into a formatted date string using MomentService.
+   * @param value The UNIX timestamp (in seconds) to transform.
    * @returns The formatted date string or the original value if it is falsy.
    */
   transform(value: number): any {
+
     // Return the original value if it is falsy (e.g., null or undefined)
     if (!value) return value;
-    // Use MomentService to format the date
-    const formatted = this._momentService.formatDate(value);
+
+    // Use MomentService to format the date (multiplying by 1000 to convert seconds to milliseconds)
+    const formatted = this._momentService.formatDate(value * 1000);
+
     // Return the formatted date string
-    return `${formatted.date}`;
+    return `${formatted.date} ${formatted.time}`;
   }
 
 }
