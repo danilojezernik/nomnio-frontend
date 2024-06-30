@@ -37,7 +37,7 @@ export class MomentService {
     // Return the formatted date in 'DD.MM.' format
     return {
       date: formattedDate.format("DD.MM."), // Format date as 'DD.MM.YYYY'
-      time: formattedDate.format("HH:mm")       // Format time as 'HH:mm'
+      time: formattedDate.format("HH:mm") // Format time as 'HH:mm'
     };
   }
 

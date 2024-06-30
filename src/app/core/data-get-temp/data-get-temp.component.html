@@ -1,4 +1,4 @@
-<!-- Angular container to check if weatherData$ is available and assign it to data START -->
+<!-- Angular container to check if weatherCurrentData$ is available and assign it to currentData START -->
 <ng-container *ngIf="weatherCurrentData$ | async as currentData; else loadingData">
 
   <!-- Display the temperature of the city if available -->
@@ -11,15 +11,15 @@
   <!-- Display the low and high temperatures of the city if available -->
   <span *ngIf="currentData.main">L: {{ currentData.main.temp_min }} | H: {{ currentData.main.temp_max }}</span>
 
-  <!-- Display error message if forecastData is empty START -->
+  <!-- Display error message if currentData is null or undefined START -->
   <ng-container *ngIf="!currentData" class="error-container">
     <span class="error-message">
       {{ errorMessage }}
     </span>
   </ng-container>
-  <!-- Display error message if forecastData is empty END -->
+  <!-- Display error message if currentData is null or undefined END -->
 </ng-container>
-<!-- Using ng-container to handle asynchronous data END -->
+<!-- Angular container to check if weatherCurrentData$ is available and assign it to currentData END -->
 
 <!-- Display spinner while data is loading START -->
 <ng-template #loadingData>

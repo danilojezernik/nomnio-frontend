@@ -1,5 +1,4 @@
 <!-- Angular container to check if weatherForecastData$ is available and assign it to forecastData START -->
-
 <ng-container *ngIf="weatherForecastData$ | async as forecastData; else loadingData">
 
   <ng-container *ngIf="forecastData.length > 0">
