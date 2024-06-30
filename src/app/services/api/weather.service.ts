@@ -15,18 +15,21 @@ import { ErrorHandleService } from "../error-handle/error-handle.service";
 })
 export class WeatherService {
 
-  public formattedDateTime!: { date: string, time: string };
+  /**
+   * Holds the formatted date and time retrieved from MomentService.
+   * Initialized as undefined until populated.
+   */
+  public formattedDateTime: { date: string, time: string } | undefined;
 
   private _http = inject(HttpClient);
-  public _momentService = inject(MomentService);
+  private _momentService = inject(MomentService);
   private _errorHandleService = inject(ErrorHandleService);
 
   /**
    * Retrieves current weather data from the backend API or local storage
-   * @returns Observable<WeatherCurrent[]> Observable emitting an array of current weather data
+   * @returns Observable<WeatherCurrent> Observable emitting current weather data
    */
-  getWeatherCurrent(): Observable<WeatherCurrent[]> {
-
+  getWeatherCurrent(): Observable<WeatherCurrent> {
     const dataInLocalStorage = localStorage.getItem(LOCAL_STORAGE_KEYS.WEATHER_DATA_CURRENT);
 
     if (dataInLocalStorage) {
@@ -37,7 +40,7 @@ export class WeatherService {
     } else {
       // If data does not exist in local storage, fetch from the backend API
       return this._http.get<WeatherCurrent[]>(`${environment.urlLocalCurrent}`).pipe(
-        map(data => data),
+        map(data => data[0]),
         /**
          * Tap into the observable stream without modifying it,
          * then get current ISO date and format ISO date using Moment service
@@ -77,7 +80,7 @@ export class WeatherService {
       this.getCurrentDateAndTime();
       return of(JSON.parse(dataInLocalStorage));
     } else {
-
+      // If data does not exist in local storage, fetch from the backend API
       return this._http.get<WeatherForecast[]>(`${environment.urlLocalForecast}`).pipe(
         map(data => data[0].list),
         /**
@@ -89,4 +92,5 @@ export class WeatherService {
       );
     }
   }
+
 }

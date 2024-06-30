@@ -31,12 +31,13 @@ export class MomentService {
    * @param timestamp The timestamp to format.
    * @returns An object containing the formatted date.
    */
-  formatDate(timestamp: number): { date: string } {
+  formatDate(timestamp: number): { date: string, time: string } {
     // Parse the timestamp using Moment.js
     const formattedDate = moment(timestamp);
     // Return the formatted date in 'DD.MM.' format
     return {
-      date: formattedDate.format("DD.MM.")
+      date: formattedDate.format("DD.MM."), // Format date as 'DD.MM.YYYY'
+      time: formattedDate.format("HH:mm")       // Format time as 'HH:mm'
     };
   }
 

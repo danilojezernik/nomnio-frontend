@@ -9,6 +9,9 @@ import { SpinnerComponent } from "../../shared/components/spinner/spinner.compon
 import { LocalStorageService } from "../../services/local-storage/local-storage.service";
 import { LOCAL_STORAGE_KEYS } from "../../shared/global-variables/global-variables";
 
+/**
+ * Component responsible for displaying weather forecast information.
+ */
 @Component({
   selector: 'app-data-get-forecast',
   standalone: true,
@@ -17,8 +20,6 @@ import { LOCAL_STORAGE_KEYS } from "../../shared/global-variables/global-variabl
 })
 export class DataGetForecastComponent implements OnInit {
 
-
-  // Dependency injection of services using Angular's inject function
   private _weatherService = inject(WeatherService); // Injecting WeatherService to fetch weather data
   private _localStorageService = inject(LocalStorageService); // Injecting LocalStorageService to manage local storage
 
@@ -27,22 +28,20 @@ export class DataGetForecastComponent implements OnInit {
   weatherForecastData$!: Observable<Weather[]>; // Observable to hold weather forecast data
   errorMessage = ''; // Error message to display in case of API call failure
 
-  // Lifecycle hook: OnInit interface method
   ngOnInit() {
     this.getForecastData(); // Call method to fetch data on component initialization
   }
 
-  // Method to fetch weather forecast data
+  /**
+   * Fetches weather forecast data asynchronously using WeatherService.
+   * Utilizes tap operator for side effects and catchError for error handling.
+   */
   getForecastData() {
     this.spinner = true; // Show spinner during data fetch
 
-    /*
-      Use WeatherService to fetch weather forecast data asynchronously:
-      - tap operator: performs side effects when data is emitted, here updates spinner state and saves data to local storage
-      - catchError operator: handles errors in case of API call failure, updates spinner and sets an empty array if error occurs
-    */
     this.weatherForecastData$ = this._weatherService.getWeatherForecast().pipe(
       tap((data) => {
+
         this.spinner = false; // Hide spinner when data is successfully fetched
         return this._localStorageService.saveDataToLocalStorage(LOCAL_STORAGE_KEYS.WEATHER_DATA_FORECAST, data); // Save data to local storage
       }),

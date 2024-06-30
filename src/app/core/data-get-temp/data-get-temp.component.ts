@@ -19,37 +19,34 @@ import { SpinnerComponent } from "../../shared/components/spinner/spinner.compon
 })
 export class DataGetTempComponent implements OnInit {
 
-  // Dependency injection of services using Angular's inject function
-  private _weatherService = inject(WeatherService); // Injecting WeatherService to fetch weather data
-  private _localStorageService = inject(LocalStorageService); // Injecting LocalStorageService to manage local storage
+  private _weatherService = inject(WeatherService);
+  private _localStorageService = inject(LocalStorageService);
 
   // Component properties
-  spinner: boolean = false; // Flag to show/hide the spinner
-  weatherCurrentData$!: Observable<WeatherCurrent[]>; // Observable to hold weather current data
+  spinner = false; // Flag to show/hide the spinner
+  weatherCurrentData$!: Observable<WeatherCurrent | null>; // Observable to hold weather current data
   errorMessage = ''; // Error message to display in case of API call failure
 
   ngOnInit() {
-    this.getCurrentData()
+    this.getCurrentData();
   }
 
+  /**
+   * Fetches current weather data asynchronously using WeatherService.
+   * Utilizes tap operator for side effects and catchError for error handling.
+   */
   getCurrentData() {
     this.spinner = true; // Show spinner during data fetch
 
-    /*
-      Use WeatherService to fetch weather current data asynchronously:
-      - tap operator: performs side effects when data is emitted, here updates spinner state and saves data to local storage
-      - catchError operator: handles errors in case of API call failure, updates spinner and sets an empty array if error occurs
-    */
-
     this.weatherCurrentData$ = this._weatherService.getWeatherCurrent().pipe(
-      tap((data) => {
+      tap(data => {
         this.spinner = false; // Hide spinner when data is successfully fetched
-        return this._localStorageService.saveDataToLocalStorage(LOCAL_STORAGE_KEYS.WEATHER_DATA_CURRENT, data); // Save data to local storage
+        this._localStorageService.saveDataToLocalStorage(LOCAL_STORAGE_KEYS.WEATHER_DATA_CURRENT, data); // Save data to local storage
       }),
       catchError(error => {
         this.spinner = false; // Hide spinner on error
         this.errorMessage = error.message; // Assign error message for display
-        return of([] as WeatherCurrent[]); // Return an empty array in case of error
+        return of(null); // Return null in case of error
       })
     );
   }

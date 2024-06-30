@@ -1,26 +1,18 @@
 <!-- Angular container to check if weatherData$ is available and assign it to data START -->
 <ng-container *ngIf="weatherCurrentData$ | async as currentData; else loadingData">
 
-  <ng-container *ngIf="currentData.length > 0">
+  <!-- Display the temperature of the city if available -->
+  <span class="font-size-3" *ngIf="currentData.main">{{ currentData.main.temp.toFixed(0) }}°</span>
 
-  <!-- Loop through each weather in data START -->
-  <div *ngFor="let weather of currentData">
+  <!-- Display the weather description in uppercase if available -->
+  <p style="text-transform: uppercase; font-size: 1rem; padding: 10px 0"
+     *ngIf="currentData.weather">{{ currentData.weather[0].description | translate }}</p>
 
-    <!-- Display the temperature of the city if available -->
-    <span class="font-size-3" *ngIf="weather.main">{{ weather.main.temp.toFixed(0) }}°</span>
+  <!-- Display the low and high temperatures of the city if available -->
+  <span *ngIf="currentData.main">L: {{ currentData.main.temp_min }} | H: {{ currentData.main.temp_max }}</span>
 
-    <!-- Display the weather description in uppercase if available -->
-    <p style="text-transform: uppercase; font-size: 1rem; padding: 10px 0"
-       *ngIf="weather.weather">{{ weather.weather[0].description | translate }}</p>
-
-    <!-- Display the low and high temperatures of the city if available -->
-    <span *ngIf="weather.main">L: {{ weather.main.temp_min }} | H: {{ weather.main.temp_max }}</span>
-
-  </div>
-  <!-- Loop through each weather in data END -->
-  </ng-container>
   <!-- Display error message if forecastData is empty START -->
-  <ng-container *ngIf="currentData.length === 0" class="error-container">
+  <ng-container *ngIf="!currentData" class="error-container">
     <span class="error-message">
       {{ errorMessage }}
     </span>

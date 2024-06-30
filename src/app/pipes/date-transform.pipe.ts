@@ -23,9 +23,9 @@ export class DateTransformPipe implements PipeTransform {
     // Return the original value if it is falsy (e.g., null or undefined)
     if (!value) return value;
     // Use MomentService to format the date
-    const formatted = this._momentService.formatDate(value);
+    const formatted = this._momentService.formatDate(value * 1000);
     // Return the formatted date string
-    return `${formatted.date}`;
+    return `${formatted.date} ${formatted.time}`;
   }
 
 }
