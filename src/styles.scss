@@ -1,22 +1,22 @@
 /* Import global styles */
 @import "styles/global";
 
-/* Import main color styles */
-@import "styles/main/main-colors";
-
 /* Import layout styles */
 @import "styles/layout/layout";
+
+/* Import style style */
+@import "styles/style/style";
 
 /* Import main component styles */
 @import "styles/components/main";
 /* Import component styles for spinner */
 @import "styles/components/spinner";
 /* Import component styles for refresh button */
-@import "styles/components/button-refresh";
+@import "styles/style/button";
 /* Import component styles for scrollbar */
 @import "styles/components/scrollbar";
 /* Import component styles for error message */
-@import "styles/components/error-message";
+@import "styles/style/error-message";
 
 /* Import abstract styles for variables */
 @import "styles/abstract/variables";

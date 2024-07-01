@@ -2,7 +2,7 @@
 <ng-container *ngIf="weatherDataCity$ | async as cityData; else loadingData">
 
   <!-- Display the name of the city if weather data is available -->
-  <p class="font-size-2" *ngIf="cityData.main">{{ cityData.name }}</p>
+  <p class="color-orange text-shadow font-size-3" *ngIf="cityData.main">{{ cityData.name }}</p>
 
   <!-- Display error message if cityData is null or undefined START -->
   <ng-container *ngIf="!cityData" class="error-container">
@@ -12,11 +12,13 @@
   </ng-container>
   <!-- Display error message if cityData is null or undefined END -->
 
+  <!-- Display formatted date and time of the last update using WeatherService -->
+  <div *ngIf="cityData.main" class="font-size-1 text-shadow">
+    {{ weatherService.formattedDateTime?.date }} {{ 'at' | translate}} {{ weatherService.formattedDateTime?.time }}
+  </div>
 </ng-container>
 <!-- Angular container to check if weatherDataCity$ is available and assign it to cityData END -->
 
-<!-- Display formatted date and time of the last update using WeatherService -->
-{{ weatherService.formattedDateTime?.date }} {{ 'at' | translate}} {{ weatherService.formattedDateTime?.time }}
 
 <!-- Display spinner while data is loading START -->
 <ng-template #loadingData>

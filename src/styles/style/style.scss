@@ -1,0 +1,62 @@
+@import "../abstract/variables";
+
+/* Center text alignment */
+.text-center {
+  text-align: center;
+}
+
+/* Justify content with space between */
+.justify-content-between {
+  justify-content: space-between;
+}
+
+/* Center align items */
+.align-items-center {
+  align-items: center;
+}
+
+/* Transform text to uppercase */
+.to-uppercase {
+  text-transform: uppercase;
+}
+
+/* Font size 3rem for city */
+.font-size-3 {
+  font-size: 3rem;
+}
+
+/* Font size 2rem for city */
+.font-size-2 {
+  font-size: 2rem;
+}
+
+/* Font size 1rem for description */
+.font-size-1 {
+  font-size: 1rem;
+}
+
+/* Padding 10px top and bottom */
+.padding-10-0 {
+  padding: 10px 0;
+}
+
+/* Padding 2px top and bottom */
+.padding-2-0 {
+  padding: 2px 0;
+}
+
+/* Bold font weight */
+.bolder {
+  font-weight: 900;
+}
+
+/* Text shadow and stroke for better readability */
+.text-shadow {
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.6); /* Stroke effect for text */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Shadow effect for text */
+}
+
+/* Gap of 16px between elements */
+.gap-16 {
+  gap: 16px;
+}

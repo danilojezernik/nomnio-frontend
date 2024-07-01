@@ -1,3 +1,5 @@
+@import "../abstract/variables";
+
 /* Webkit browsers (Chrome, Safari, Edge) */
 
 /* Style the width of the scrollbar */
@@ -13,7 +15,7 @@
 
 /* Style the draggable part of the scrollbar (thumb) */
 ::-webkit-scrollbar-thumb {
-  background: #e86e1e; /* Set the background color of the thumb */
+  background: $color-main; /* Set the background color of the thumb */
   border-radius: 4px; /* Add rounded corners to the thumb */
   border: 1px solid #f1f1f1; /* Add a border to the thumb */
 }
