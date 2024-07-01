@@ -1,1 +1,1 @@
-<button class="button" (click)="refreshData()">{{'refresh' | translate }}</button>
+<button *ngIf="isDataAvailable" class="button" (click)="refreshData()">{{'refresh' | translate }}</button>

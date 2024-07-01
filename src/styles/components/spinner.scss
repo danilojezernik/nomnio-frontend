@@ -1,48 +1,54 @@
-/* Styles for SVG elements */
-.svg {
-  width: 75px; /* Width of the SVG */
-  height: 75px; /* Height of the SVG */
-  display: inline-block; /* Display as inline-block */
-  padding: 0; /* No padding */
-  transform: rotate(90deg); /* Rotate 90 degrees */
-  -webkit-transform: rotate(90deg); /* Rotate 90 degrees for WebKit browsers */
+@import "../abstract/variables";
+
+/* Container for the spinner, centered within a 30vh height */
+.spinner-container {
+  display: flex;
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Horizontally center items */
+  height: 30vh; /* Set container height */
 }
 
-/* Animation styles for the circle */
-.circle {
-  fill: transparent; /* Transparent fill */
-  stroke: #e86e1e; /* Stroke color */
-  stroke-width: 10px; /* Stroke width */
-  -webkit-animation: 1.5s circle infinite ease-in; /* WebKit animation for compatibility */
-  animation: 1.5s circle infinite ease-in; /* Standard animation */
+/* Styling for the spinner element */
+.spinner {
+  position: relative; /* Relative positioning for child elements */
+  width: 50px; /* Fixed width */
+  height: 50px; /* Fixed height */
+  display: flex; /* Flex display */
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Horizontally center items */
 }
 
-/* Keyframes for the circle animation */
-@keyframes circle {
-  0% {
-    stroke-dasharray: 0 400; /* No stroke initially */
-    stroke-dashoffset: 0; /* Start offset */
-  }
-  25% {
-    stroke-dashoffset: 0; /* Maintain offset */
-  }
-  100% {
-    stroke-dasharray: 400 400; /* Full stroke */
-    stroke-dashoffset: -400; /* Offset to animate */
-  }
+/* Common styling for spinner pseudo-elements */
+.spinner::before,
+.spinner::after {
+  border: 6.7px solid $color-main; /* Border color from variables */
+  border-radius: 50%; /* Round borders */
+  position: absolute; /* Absolute positioning */
+  content: ''; /* Empty content */
+  display: block; /* Block display */
 }
 
-/* WebKit keyframes for circle animation */
-@-webkit-keyframes circle {
-  0% {
-    stroke-dasharray: 0 400; /* No stroke initially */
-    stroke-dashoffset: 0; /* Start offset */
-  }
-  25% {
-    stroke-dashoffset: 0; /* Maintain offset */
-  }
-  100% {
-    stroke-dasharray: 400 400; /* Full stroke */
-    stroke-dashoffset: -400; /* Offset to animate */
+/* Styling for the spinner's ::before pseudo-element */
+.spinner::before {
+  width: 33.6px; /* Fixed width */
+  height: 33.6px; /* Fixed height */
+  border-bottom-color: transparent; /* Transparent bottom border */
+  border-left-color: transparent; /* Transparent left border */
+  animation: spinner-1o3y8q 0.75s infinite linear reverse; /* Animation settings */
+}
+
+/* Styling for the spinner's ::after pseudo-element */
+.spinner::after {
+  animation: spinner-1o3y8q 0.5s infinite linear; /* Animation settings */
+  height: 56px; /* Fixed height */
+  width: 56px; /* Fixed width */
+  border-right-color: transparent; /* Transparent right border */
+  border-top-color: transparent; /* Transparent top border */
+}
+
+/* Keyframes for the spinner rotation animation */
+@keyframes spinner-1o3y8q {
+  to {
+    transform: rotate(360deg); /* Full rotation */
   }
 }

@@ -1,3 +1,5 @@
+@import "../abstract/variables";
+
 /* Styling for the button element */
 .button {
   position: fixed; /* Fix the button's position on the screen */
@@ -61,13 +63,20 @@
 
 /* Button reset style */
 .button-style-reset {
-  color: black;              /* White text color */
+  color: black; /* White text color */
   background-color: white; /* Transparent background */
-  padding: 10px;             /* Padding around the content */
-  border: 0;                 /* No border */
+  padding: 10px; /* Padding around the content */
+  border: 0; /* No border */
 }
 
 /* Border bottom but not in last child */
 .border-bottom:not(:last-child) {
   border-bottom: 1px solid #c4c4c4;
+}
+
+/* Media query for small screens */
+@media (max-width: 319px) {
+  .button {
+    left: 50%; /* Center the button horizontally */
+  }
 }

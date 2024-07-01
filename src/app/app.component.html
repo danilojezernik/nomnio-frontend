@@ -1,59 +1,37 @@
-<!-- Main container START -->
+<!-- Header with fixed position and centered content -->
+<div class="header fixed-position justify-center align-items-center width-100 flex color-white top-0 z-index-999">
+  <!-- Application header component -->
+  <app-header></app-header>
+  <!-- Button to toggle language -->
+  <button class="padding-8 button-reset" (click)="toggleLanguageClick()">
+    {{ getCurrentLanguageTextOnButton() }}
+  </button>
+</div>
+
+<!-- Main container -->
 <div class="container">
 
-  <!-- Header section START -->
-  <div class="header shadow">
-    <app-header></app-header>
+  <!-- Time display section -->
+  <div class="content flex flex-column justify-center align-items-center text-center padding-x-8">
+    <app-data-get-time></app-data-get-time>
+  </div>
 
-    <!-- Button to change language START -->
-    <div class="language-buttons">
-      <button class="button-style-reset" (click)="toggleLanguageClick()">
-        {{ getCurrentLanguageTextOnButton() }}
-      </button>
+  <!-- Weather data section with row layout and gap -->
+  <div class="content flex flex-row gap-16">
+
+    <!-- Temperature data component -->
+    <div class="width-100 text-center">
+      <app-data-get-temp></app-data-get-temp>
     </div>
-    <!-- Button to change language END -->
 
-  </div>
-  <!-- Header section END -->
-
-  <!-- Content positioning section START -->
-  <div class="content-position">
-    <!-- Main content START -->
-    <div class="content">
-
-      <!-- Timestamp section START -->
-      <div class="timestamp shadow">
-        <app-data-get-time></app-data-get-time>
-      </div>
-      <!-- Timestamp section END -->
-
-      <!-- Info and forecast container START -->
-      <div class="info-container">
-
-        <!-- Info section START -->
-        <div class="info">
-          <app-data-get-temp></app-data-get-temp>
-        </div>
-        <!-- Info section END -->
-
-        <!-- Forecast section START -->
-        <div class="forecast shadow">
-          <app-data-get-forecast></app-data-get-forecast>
-        </div>
-        <!-- Forecast section END -->
-
-      </div>
-      <!-- Info and forecast container END -->
+    <!-- Forecast data component -->
+    <div class="width-100">
+      <app-data-get-forecast></app-data-get-forecast>
     </div>
-    <!-- Main content END -->
-  </div>
-  <!-- Content positioning section END -->
 
-  <!-- Refresh button section START -->
-  <div class="refresh-button">
-    <app-refresh-button></app-refresh-button>
   </div>
-  <!-- Refresh button section END -->
 
 </div>
-<!-- Main container END -->
+
+<!-- Refresh button component -->
+<app-refresh-button></app-refresh-button>

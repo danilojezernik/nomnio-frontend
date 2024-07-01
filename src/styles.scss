@@ -1,9 +1,6 @@
 /* Import global styles */
 @import "styles/global";
 
-/* Import main color styles */
-@import "styles/main/main-colors";
-
 /* Import layout styles */
 @import "styles/layout/layout";
 
@@ -20,8 +17,6 @@
 @import "styles/components/scrollbar";
 /* Import component styles for error message */
 @import "styles/style/error-message";
-/* Import component styles for error message */
-@import "styles/components/forecast";
 
 /* Import abstract styles for variables */
 @import "styles/abstract/variables";
